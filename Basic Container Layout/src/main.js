@@ -30,7 +30,7 @@ var mainContainer = new Container({
 	left: 0, right: 0, top: 0, bottom: 0, 
 	active: false, skin: whiteSkin, name: 'mainCon',
 	contents: [
-		new Container( { top: 0, left: 0, right: 0, height: 100, skin: redSkin, name: 'containerRed', active: true,
+		new Container( { top: 0, left: 0, right: 0, height: 100, skin: redSkin, name: 'containerOne', active: true,
 			contents: [
 			    new Label({top: 5, string: '(Add)', style: whiteStyle}),
 				new Label({string: 'Top and Side (1)', style: whiteStyle})						
@@ -42,7 +42,7 @@ var mainContainer = new Container({
 			}),	
 			
 		}),
-		new Container( { top: 0, bottom: 0, right: 0, width: 100, skin: greenSkin, active: true, name: 'containerGreen',
+		new Container( { top: 0, bottom: 0, right: 0, width: 100, skin: greenSkin, active: true, name: 'containerTwo',
 			contents: [
 				new Column({
 					contents: [
@@ -61,7 +61,7 @@ var mainContainer = new Container({
 				}},
 			}),	
 		}),
-		new Container( { width: 160, height: 100, skin: blueSkin, active: true, name: 'containerBlue',
+		new Container( { width: 160, height: 100, skin: blueSkin, active: true, name: 'containerThree',
 			contents: [
 			    new Label({top: 5, string: '(Color Parent)', style: whiteStyle}),
 				new Label({string: 'Height, Width (3)', style: whiteStyle})
