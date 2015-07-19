@@ -11,7 +11,7 @@ The MobileFramework's dialog boxes are declared as special Handler objects. All 
 
 When you want to return data from a dialog box, you'll need to define the action attribute with a reference to a handler which can accept the data from the inputs defined in the items section of the dialog.  This handler does not have to be any different from handlers dealing with input from other sources and the dialog box's data will be passed as a simple URL query string.
 
-As dialog boxes are defined as Handlers rather than Containers, they are invoked directly rather than added to the container heierarchy.  Passing data into a dialog box is just the same as passing data to any other handler - a simple query string is all that is required.
+As dialog boxes are defined as Handlers rather than Containers, they are invoked directly rather than added to the container heierarchy.  Passing data into a dialog box is just the same as passing data to any other handler - a simple query string is all that is required.  Data that is passed into a dialog box is ignored unless the name of the incoming variable matches one of the "id" definitions in the itmes list or if the incoming query is referenced directly (such as by the Dialog.Caption here).
 
 ##Notes
 For Dialog boxes to work correctly, your application must inheret its behavior from an instance of MODEL.ApplicationBehavior( application ).  [WHY]
