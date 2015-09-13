@@ -25,8 +25,6 @@ var yellowSkin = new Skin ({fill: 'yellow'});
 var blackStyle = new Style ({ font: '18px', color: 'black', horizontal: 'left' });
 var whiteStyle = new Style ({ font: '18px', color: 'white', horizontal: 'left'});
 
-
-
 var ContainerTemplate = Container.template(function ($) { return {
 	top: $.top, bottom: $.bottom, left: $.left, right: $.right, height: $.height, width: $.width, skin: $.skin,
 	contents: [
