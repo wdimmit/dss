@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<application xmlns="http://www.kinoma.com/kpr/application/1" id="basicCheckboxSample" program="src/main" title="Basic Checkbox Sample">
+<application xmlns="http://www.kinoma.com/kpr/application/1" id="basiccheckboxsample.example.kinoma.marvell.com" program="src/main" title="basic-checkbox-sample">
 
 </application>
