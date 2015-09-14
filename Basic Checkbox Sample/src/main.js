@@ -1,4 +1,19 @@
 //@program
+/*
+  Copyright 2011-2015 Marvell Semiconductor, Inc.
+  
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+      http://www.apache.org/licenses/LICENSE-2.0
+      
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+*/
 var THEME = require('themes/flat/theme');
 var BUTTONS = require('controls/buttons');
 
@@ -8,12 +23,6 @@ var whiteSkin = new Skin({fill:'white'});
 
 var whiteStyle = new Style ({ font: '20px', color: 'white' });
 
-var MyStatusBar = new Container({
-	top: 5, left: 10, right: 10, height: 35, skin: greySkin, 
-	contents: [
-	          new Label({style: whiteStyle, name: 'statusLabel'})
-      ]
-})
 
 var MyCheckBoxTemplate = BUTTONS.LabeledCheckbox.template(function($){ return{
 	top:50, bottom:50, left:50, right:50,
@@ -26,6 +35,13 @@ var MyCheckBoxTemplate = BUTTONS.LabeledCheckbox.template(function($){ return{
 		}}
 	})
 }});
+
+var MyStatusBar = new Container({
+	top: 5, left: 10, right: 10, height: 35, skin: greySkin, 
+	contents: [
+	          new Label({style: whiteStyle, name: 'statusLabel'})
+      ]
+})
 
 var MySimpleButtons = new Line({
 	left: 20, right: 20, bottom: 5, height: 50, active: true,
