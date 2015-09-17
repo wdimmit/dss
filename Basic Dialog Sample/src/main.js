@@ -6,8 +6,11 @@ var KEYBOARD = require('mobile/keyboard');
 
 var backgroundSkin = new Skin({ fill: '#eee',});
 var buttonSkin = new Skin({ fill: '#ccf',});
-var headerStyle = new Style({ color: '#444', font: 'bold 18px', horizontal: 'center', vertical: 'middle', });
-var buttonStyle = new Style({ color: 'blue', font: 'bold 24px', horizontal: 'center', vertical: 'middle', });
+
+var buttonStyle = new Style({ color: 'blue', font: 'bold 24px', horizontal: 'center', vertical: 'middle' });
+var headerStyle = new Style({ color: '#444', font: 'bold 18px', horizontal: 'center', vertical: 'middle' });
+
+
 
 Handler.bind("/simple", Object.create(MODEL.DialogBehavior.prototype, {
 	onDescribe: { value: 
@@ -57,11 +60,11 @@ var MainScreen = Container.template(function($) { return { left: 0, right: 0, to
 	Column($, { width: 300, contents: [
 		Label($, { height: 35, left: 25, right: 25, active: true, string: 'Show Simple Dialog', skin: buttonSkin,
 			style: buttonStyle,
-			behavior: Object.create(Behavior.prototype, {
-				onTouchEnded: { value: function(label, x, y, id, ticks) {			
+			behavior: Behavior({
+				onTouchEnded: function(label, x, y, id, ticks) {			
 					dialogData = {first_name: 'Will', greeting: 'Welcome to KinomaJS', secret: '42'}
 					label.invoke(new Message("/simple?" + serializeQuery(dialogData)));
-				}}
+				}
 			}),
 		}),
 	]
@@ -71,6 +74,5 @@ var MainScreen = Container.template(function($) { return { left: 0, right: 0, to
 
 
 application.behavior = new MODEL.ApplicationBehavior( application );
-
 application.add(new MainScreen({}));
 
