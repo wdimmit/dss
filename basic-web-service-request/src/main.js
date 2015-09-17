@@ -20,8 +20,7 @@ var MainContainer = new Container({
 			behavior: Behavior({
 				onTouchEnded: function(container, id, x, y, ticks) {
 					var url = 'http://md5.jsontest.com/';
-					var query = serializeQuery({text: origText});
-					
+					var query = serializeQuery({text: origText});				
 					var msg = new Message(url + '?' + query);
 					
 					container.invoke(msg, Message.TEXT);
