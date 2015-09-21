@@ -26,7 +26,12 @@ var MainContainer = new Container({
 					container.invoke(msg, Message.TEXT);
 				},
 				onComplete: function(container, message, text) {
-					var responseObj = JSON.parse(text);
+					try {
+						var responseObj = JSON.parse(text);
+					}
+					catch (e) {
+						trace("fail");
+					}
 					mainContainer.output.string = responseObj.md5; 
 					trace('*'+text+'*'+'\n');
 				}
