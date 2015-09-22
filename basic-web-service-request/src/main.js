@@ -1,11 +1,11 @@
 //@program
 
 /*Skins and Styles*/
-var buttonSkin = new Skin ({fill: 'Green'});
+var buttonSkin = new Skin ({fill: 'green'});
 var whiteBox = new Skin ({fill: 'white'});
 
 var buttonStyle = new Style({font: '22px', color: 'white'})
-var smallStyle = new Style ({font: '20px', color: '#000000'});
+var smallStyle = new Style ({font: '20px', color: 'black'});
 
 /* Globals */
 var origText = 'thequickbrownfoxjumpedoverthelazydog'
@@ -26,14 +26,19 @@ var MainContainer = new Container({
 					container.invoke(msg, Message.TEXT);
 				},
 				onComplete: function(container, message, text) {
-					try {
-						var responseObj = JSON.parse(text);
+					if (0 == message.error && 200 == message.status) {
+						try {
+							var responseObj = JSON.parse(text);
+						}
+						catch (e) {
+							trace('Web service responded with invalid JSON!\n');
+						}
+						MainContainer.output.string = responseObj.md5; 
+						trace('Raw Response Body: *'+text+'*'+'\n');
 					}
-					catch (e) {
-						trace("fail");
+					else {
+						trace('Web service failed with a status of ' + message.status + '\n');
 					}
-					mainContainer.output.string = responseObj.md5; 
-					trace('*'+text+'*'+'\n');
 				}
 			}),
 			contents: [
