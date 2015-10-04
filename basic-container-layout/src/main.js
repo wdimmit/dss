@@ -23,21 +23,21 @@ var whiteSkin = new Skin ({fill: 'white'});
 var yellowSkin = new Skin ({fill: 'yellow'});
 
 var blackStyle = new Style ({ font: '18px', color: 'black', horizontal: 'left' });
-var whiteStyle = new Style ({ font: '18px', color: 'white', horizontal: 'left'});
+var whiteStyle = new Style ({ font: '18px', color: 'white', horizontal: 'left' });
 
 var ContainerTemplate = Container.template(function ($) { return {
 	top: $.top, bottom: $.bottom, left: $.left, right: $.right, height: $.height, width: $.width, skin: $.skin,
 	contents: [
-	           Text($, {top: 0, bottom: 0, left: 5, right: 0, string: $.string, style: $.style})
-       ]
+		Text($, {top: 0, bottom: 0, left: 5, right: 0, string: $.string, style: $.style})
+	]
 }})
 
 /* Main screen layout */
 var mainContainer = Container.template(function ($) { return {
 	left: 0, right: 0, top: 0, bottom: 0, skin: whiteSkin, 
 	contents: $.containers.map(function(item) {
-			return new ContainerTemplate(item);
-		})	
+		return new ContainerTemplate(item);
+	})	
 }});
 
 /* Application definition */
@@ -48,7 +48,7 @@ application.behavior = {
              {top: 0, bottom: 0, left: undefined, right: 0, height: undefined, width:100, skin: greenSkin, string: 'Positioned By:\n\ntop, bottom, \nright, width', style: whiteStyle},
              {top: undefined, bottom: 0, left: 0, right: 0, height: 75, width: undefined, skin: yellowSkin, string: 'Positioned By:\n\nbottom, left, right, height', style: blackStyle},
              {top: undefined, bottom: undefined, left: undefined, right: undefined, height: 100, width: 160, skin: blueSkin, string: 'Positioned By:\n\nheight, width', style: whiteStyle}
-        ]}
+        ]};
 		application.add(new mainContainer(data));
 	}
 }

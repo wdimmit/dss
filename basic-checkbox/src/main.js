@@ -14,7 +14,7 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 */
-var THEME = require('themes/flat/theme');
+THEME = require('themes/flat/theme');
 var BUTTONS = require('controls/buttons');
 
 var blueSkin = new Skin ({fill: 'blue'});
@@ -26,49 +26,47 @@ var whiteStyle = new Style ({ font: '20px', color: 'white' });
 
 var MyCheckBoxTemplate = BUTTONS.LabeledCheckbox.template(function($){ return{
 	top:50, bottom:50, left:50, right:50,
-	behavior: Object.create(BUTTONS.LabeledCheckboxBehavior.prototype, {
-		onSelected: { value:  function(checkBox){
+	behavior: BUTTONS.LabeledCheckboxBehavior({
+		onSelected: function(checkBox){
 			MyStatusBar.statusLabel.string = checkBox.buttonLabel.string + ' checked';
-		}},
-		onUnselected: { value:  function(checkBox){
+		},
+		onUnselected: function(checkBox){
 			MyStatusBar.statusLabel.string = checkBox.buttonLabel.string + ' unchecked';
-		}}
-	})
+		}
+	}),
 }});
 
 var MyStatusBar = new Container({
 	top: 5, left: 10, right: 10, height: 35, skin: greySkin, 
 	contents: [
-	          new Label({style: whiteStyle, name: 'statusLabel'})
-      ]
+		new Label({style: whiteStyle, name: 'statusLabel'})
+	]
 })
 
 var MySimpleButtons = new Line({
-	left: 20, right: 20, bottom: 5, height: 50, active: true,
+	left: 20, right: 20, bottom: 5, height: 50, style: whiteStyle,
 	contents: [
 		new Container({left: 10, right: 10, skin: blueSkin, active: true,
-			contents: [
-			    new Label({string: 'Check All', style: whiteStyle})	        
-	        ],
-	    	behavior: Object.create(Behavior.prototype, {
-	    		onTouchEnded: { value: function(container, id, x, y, ticks) {
+			behavior : Behavior({
+	    		onTouchEnded: function(container, id, x, y, ticks) {
 	    			checkbox.forEach(checkTheBox)
-	    		}},
+	    		}
 	    	}),		
+			contents: [
+			    new Label({string: 'Check All'})	        
+	        ],
 		}),
 		new Container({left: 10, right: 10, skin: blueSkin, active: true,
-			contents: [
-			    new Label({string: 'Uncheck All', style: whiteStyle})	        
-	        ],
-	    	behavior: Object.create(Behavior.prototype, {
-	    		onTouchEnded: { value: function(container, id, x, y, ticks) {
+			behavior : Behavior({
+	    		onTouchEnded: function(container, id, x, y, ticks) {
 	    			checkbox.forEach(unCheckTheBox)
-	    		}},
+	    		}
 	    	}),		
+			contents: [
+			    new Label({string: 'Uncheck All'})	        
+	        ],
 		})
-		
-	],
-	
+	]
 });
 
 var MainContainer = new Column({left:0, right:0, top:0, bottom:0, skin: whiteSkin});
@@ -92,11 +90,10 @@ application.behavior = {
 	onLaunch: function() { 
 		MainContainer.add(MyStatusBar);
 		
-		for (var i = 0; i < 3; i++) 
+		for (var i = 0, c = checkbox.length; i < c; i++) 
 			MainContainer.add(checkbox[i]);
 		
 		MainContainer.add(MySimpleButtons);
 		application.add(MainContainer);
-
 	}
 }
